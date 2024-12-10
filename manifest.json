@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "Free RedRooster",
+    "description": "The infamous Five Finger Discount",
+    "version": "1.0.0",
+    "permissions": ["scripting", "activeTab"],
+    "host_permissions": ["https://www.redrooster.com.au/*"],
+    "action": {
+        "default_title": "Modify Cart"
+    },
+    "background": {
+        "service_worker": "background.js"
+    }
+}
