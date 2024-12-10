@@ -5,7 +5,7 @@ chrome.action.onClicked.addListener((tab) => {
             func: modifyCart,
         });
     } else {
-        console.log(
+        alert(
             "This extension only works on https://www.redrooster.com.au/"
         );
     }
@@ -20,11 +20,11 @@ function modifyCart() {
             cart = JSON.stringify(cart);
 
             sessionStorage.setItem("cart", cart);
-            console.log('Added five finger discount.');
+            alert('Used the infamous five finger discount.');
         } else {
-            console.log("Cart not found in sessionStorage.");
+            alert("Cart not found in sessionStorage.");
         }
     } catch (error) {
-        console.error("Error modifying cart:", error);
+        alert("Error modifying cart:", error);
     }
 }
