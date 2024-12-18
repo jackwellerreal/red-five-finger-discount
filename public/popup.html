@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>RedRooster Discount</title>
     <style>
@@ -30,10 +31,21 @@
             color: #fff;
             background-color: #eb8886;
         }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px
+        }
     </style>
 </head>
+
 <body>
-    <button id="applyDiscount">Use Five Finger Discount</button>
+    <div class="container">
+        <button id="remove-min-spend">Remove Min Spend</button>
+        <button id="apply-five-finger">Use Five Finger Discount</button>
+    </div>
     <script src="popup.js"></script>
 </body>
+
 </html>
