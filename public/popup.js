@@ -46,6 +46,41 @@ document.getElementById("remove-min-spend").addEventListener("click", () => {
     });
 });
 
+document.getElementById("set-to-25-for-delivery").addEventListener("click", () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const tab = tabs[0];
+        if (
+            tab.url.startsWith("https://www.redrooster.com.au/")
+        ) {
+            chrome.scripting.executeScript({
+                target: { tabId: tab.id },
+                func: () => {
+                    try {
+                        let cart = sessionStorage.getItem("cart");
+
+                        if (cart !== null) {
+                            cart = JSON.parse(cart);
+                            cart.total = 2500;
+                            cart = JSON.stringify(cart);
+
+                            sessionStorage.setItem("cart", cart);
+
+                            alert("Used the infamous five finger discount.");
+                            window.location.reload();
+                        } else {
+                            alert("Cart not found in sessionStorage.");
+                        }
+                    } catch (error) {
+                        alert("Error modifying cart: " + error);
+                    }
+                },
+            });
+        } else {
+            alert("This extension only on the Red Rooster checkout page.");
+        }
+    });
+});
+
 document.getElementById("apply-five-finger").addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         const tab = tabs[0];
